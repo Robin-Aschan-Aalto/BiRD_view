@@ -1535,11 +1535,13 @@ def update_2D_brdf_plot(trigger1, trigger2, trigger3, uploaded_data, filename, s
     elif selected_phiVs.shape[0] == 2:
         y_1 = y[phis[phi_mask] == selected_phiVs[0]]
         y_2 = y[phis[phi_mask] == selected_phiVs[1]]
+        x_1 = x[phis[phi_mask] == selected_phiVs[0]]
+        x_2 = x[phis[phi_mask] == selected_phiVs[1]]
         if selected_phiVs[0] < 180:
-            y_1 = y_1[np.argsort(-x)]
-            y_2 = y_2[np.argsort(x)]
+            y_1 = y_1[np.argsort(-x_1)]
+            y_2 = y_2[np.argsort(x_2)]
             y = np.concatenate((y_1, y_2))
-            x = np.concatenate((np.sort(-x), np.sort(x)))
+            x = np.concatenate((np.sort(-x_1), np.sort(x_2)))
         else:
             y_1 = y_1[np.argsort(x)]
             y_2 = y_2[np.argsort(-x)]
